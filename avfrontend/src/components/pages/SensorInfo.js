@@ -1,64 +1,55 @@
 import React from 'react'
-import { Icon, Label, Menu, Table } from 'semantic-ui-react'
+import CardGroup from 'react-bootstrap/CardGroup'
+import Card from "react-bootstrap/Card";
+import "../../App.css";
 
-const SensorInfo = () => (
-  <Table celled>
-    <Table.Header>
-      <Table.Row>
-        <Table.HeaderCell>Simulation Time</Table.HeaderCell>
-        <Table.HeaderCell>Location</Table.HeaderCell>
-        <Table.HeaderCell>Speed</Table.HeaderCell>
-        <Table.HeaderCell>Service Status</Table.HeaderCell>
-        <Table.HeaderCell>Connection Status</Table.HeaderCell>
-      </Table.Row>
-    </Table.Header>
 
-    <Table.Body>
-      <Table.Row>
-        <Table.Cell>
-          <Label ribbon>First</Label>
-        </Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-      </Table.Row>
-    </Table.Body>
+export default function SensorInfo() {
+return (
+ <CardGroup>
+    <Card className='card' > 
+      <Card.Img variant="top" src="https://miro.medium.com/max/770/1*eCnoqNGCGJmNh2FLz6kZpA.jpeg" className='photo' />
+      <Card.Body>
+        <Card.Title>AV Location</Card.Title>
+        <Card.Text>
+          This data will be fetched from Mongo DB. The AV location will be extracted from the CARLA simulator 
+          and then displayed here for the admin to be track and control each AV.
+        </Card.Text>
+      </Card.Body>
+      <Card.Footer>
+        <small className="text-muted">Last updated 3 mins ago</small>
+      </Card.Footer>
+    </Card>
+    
+    <Card className='card'>
+      <Card.Img variant="top" src="https://www.eetasia.com/wp-content/uploads/sites/2/2022/03/Autonomous_Vehicles-cover.jpg?w=600&h=400&crop=1" className='photo'/>
+      <Card.Body>
+        <Card.Title>AV Status</Card.Title>
+        <Card.Text>
+        This data will be fetched from Mongo DB. The AV connectivity status will be extracted from the CARLA simulator 
+          and then displayed here for the admin to be track and control each AV.
+        </Card.Text>
+      </Card.Body>
+      <Card.Footer>
+        <small className="text-muted">Last updated 3 mins ago</small>
+      </Card.Footer>
+    </Card>
 
-    <Table.Footer>
-      <Table.Row>
-        <Table.HeaderCell colSpan='3'>
-          <Menu floated='right' pagination>
-            <Menu.Item as='a' icon>
-              <Icon name='chevron left' />
-            </Menu.Item>
-            <Menu.Item as='a'>1</Menu.Item>
-            <Menu.Item as='a'>2</Menu.Item>
-            <Menu.Item as='a'>3</Menu.Item>
-            <Menu.Item as='a'>4</Menu.Item>
-            <Menu.Item as='a' icon>
-              <Icon name='chevron right' />
-            </Menu.Item>
-          </Menu>
-        </Table.HeaderCell>
-      </Table.Row>
-    </Table.Footer>
-  </Table>
+    <Card className='card'> 
+      <Card.Img variant="top" src="https://procarreviews.com/wp-content/uploads/Best-Car-Compass.jpg" className='photo' />
+      <Card.Body>
+        <Card.Title>Heading</Card.Title>
+        <Card.Text>
+        This data will be fetched from Mongo DB. The AV direction will be extracted from the CARLA simulator 
+        and then displayed here for the admin to be track and control each AV.
+        </Card.Text>
+      </Card.Body>
+      <Card.Footer>
+        <small className="text-muted">Last updated 3 mins ago</small>
+      </Card.Footer>
+    </Card>
+  </CardGroup>
+ 
+   
 )
-
-export default SensorInfo
+}

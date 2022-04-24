@@ -12,6 +12,7 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "react-ui-cards": "^3.0.0",
     "semantic-ui-react": "^2.1.2",
     "yarn": "^1.22.18"
   },
