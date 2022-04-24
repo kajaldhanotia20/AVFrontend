@@ -7,7 +7,7 @@ import RegisterPage from './components/pages/RegisterPage'
 import ForgetPasswordPage from './components/pages/ForgetPasswordPage'
 import HomePage from './components/pages/HomePage'
 import AdminDashboard from './components/pages/AdminDashboard'
-import UserData  from './components/pages/userData'
+import UserData  from './components/pages/UserData'
 import AVData  from './components/pages/AVData'
 import ScheduleRide  from './components/pages/ScheduleRide'
 import ViewRideHistory from './components/pages/ViewRideHistory'
@@ -43,5 +43,4 @@ export default function App() {
         </Router>
     )
 }
-
 
