@@ -1,14 +1,22 @@
-import React from 'react'
+import React , {useState}  from 'react'
 import { Link } from 'react-router-dom'
 
 import '../../App.css'
 
 export default function DeleteVehicle() {
 
+    const [name, setName] = useState("");
+     function onSubmit(e) {
+       e.preventDefault();
+       alert(`Vehicle Deleted`);
+       window.location.href = "/DeleteVehicle";
+     }
+
+
     return (
         <div className="text-center m-5-auto">
             <h2>Delete a Vehicle</h2>
-            <form action="/home">
+            <form onSubmit={onSubmit}>
 
                 <p>
                     <label>Select the vehicle to delete</label><br/>
@@ -18,6 +26,7 @@ export default function DeleteVehicle() {
                      <option value="option 2">Vehicle ID-2</option>
                     <option value="option 2">Vehicle ID-3</option>
                     <option value="option 2">Vehicle ID-4</option>
+                    onChange={(e) => setName(e.target.value)}/>
                 </select>
                 </p>
               
