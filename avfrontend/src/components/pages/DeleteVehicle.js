@@ -26,7 +26,7 @@ export default function DeleteVehicle() {
                      <option value="option 2">Vehicle ID-2</option>
                     <option value="option 2">Vehicle ID-3</option>
                     <option value="option 2">Vehicle ID-4</option>
-                    onChange={(e) => setName(e.target.value)}/>
+                    onChange={(e) => setName(e.target.value)}
                 </select>
                 </p>
               
