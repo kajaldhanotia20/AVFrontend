@@ -7,8 +7,7 @@ import BackgroundImage from '../../assets/images/bg.webp'
 export default function LandingPage() {
     return (
         <header style={ HeaderStyle }>
-            <Link to="/AdminDashboard">
-            <button className="sub_btn"><span>Go to Admin Dashboard</span></button></Link>
+            
             <h1 className="main-title text-center">AV Cloud</h1>
             <p className="main-para text-center">One-stop AV renting platform</p>
             <div className="buttons text-center">

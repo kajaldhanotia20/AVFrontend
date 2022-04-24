@@ -1,58 +1,59 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
+import React from 'react'
+import Card from "react-bootstrap/Card";
+import { Button , CardGroup } from 'semantic-ui-react';
+
 
 export default function HomePage() {
-    return (
-        <section>
-            
-       <div className="text-center">
-            <h1>Welcome to AV Cloud Rental Platform</h1>
-</div>
+
+return(
+<CardGroup>
+<Card className="text-center">
+  
+  <Card.Body>
+    <Card.Title>AV User Pages</Card.Title>
+    <Card.Text>
+      With supporting text below as a natural lead-in to additional content.
+    </Card.Text>
+    <Link to="/ScheduleRide"><Button className="primary-button">Schedule a Ride</Button></Link>
+    <Link to="/ViewRideHistory"><Button className="primary-button">View Ride History</Button></Link>
+    <Link to="/BillingDashboard"><Button className="primary-button">Billing Dashboard</Button></Link>
+    <Link to="/SensoInfo"><Button className="primary-button">AV Sensor Information</Button></Link>
+  </Card.Body>
+  <Card.Footer className="text-muted">Visible only to AV Users</Card.Footer>
+</Card>
 
 
-<div className="text-center">
-    <h2>AV User Pages</h2>
+<Card className="text-center">
+  
+  <Card.Body>
+    <Card.Title>AV Owner Pages</Card.Title>
+    <Card.Text>
+      With supporting text below as a natural lead-in to additional content.
+    </Card.Text>
+    <Link to="/AddVehicle"><Button className="primary-button">Add A Vehicle</Button></Link>
+    <Link to="/DeleteVehicle"><Button className="primary-button">Delete A Vehicle</Button></Link>
+    <Link to="/AVData"><Button className="primary-button">See AV Status</Button></Link>
+    
+  </Card.Body>
+  <Card.Footer className="text-muted">Visible only to AV Owners</Card.Footer>
+</Card>
 
-            <Link to="/ScheduleRide">
-                <button className="primary-button">Schedule A Ride</button>
-            </Link>
+<Card className="text-center">
+  
+  <Card.Body>
+    <Card.Title>AV Admin Pages</Card.Title>
+    <Card.Text>
+      With supporting text below as a natural lead-in to additional content.
+    </Card.Text>
+    <Link to="/AVData"><Button className="primary-button">See User Data</Button></Link>
+    <Link to="/UserData"><Button className="primary-button">See AV Data</Button></Link>
+    
+  </Card.Body>
+  <Card.Footer className="text-muted">Visible only to AV Admins</Card.Footer>
+</Card>
 
-            <Link to="/ViewRideHistory">
-                <button className="primary-button">View Ride History</button>
-            </Link>
 
-            <Link to="/ViewRideHistory">
-                <button className="primary-button">Billing Dashboard</button>
-            </Link>
-
-            <Link to="/SensorInfo">
-                <button className="primary-button">AV Sensor Information</button>
-            </Link>
-
-            </div>
-
-<div className="text-center">
-<h2>AV Owner Pages</h2>
-
-            <Link to="/AddVehicle">
-                <button className="primary-button">Add A Vehicle</button>
-            </Link>
-
-            <Link to="/DeleteVehicle">
-                <button className="primary-button">Delete A Vehicle</button>
-            </Link>
-
-            <Link to="/AVData">
-                <button className="primary-button">See AV Data</button>
-            </Link>
-
-            </div>
-
-<div className="text-center">
-        <Link to="/">
-                <button className="primary-button">Log out</button>
-            </Link>
-        </div>
-        </section>
-    )
+</CardGroup>
+)
 }
