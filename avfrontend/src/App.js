@@ -16,6 +16,7 @@ import BillingDashboard from './components/pages/BillingDashboard'
 import SensorInfo from './components/pages/SensorInfo'
 import DeleteVehicle from './components/pages/DeleteVehicle'
 
+
 import './App.css'
 
 
@@ -38,6 +39,7 @@ export default function App() {
                     <Route path="/BillingDashboard" component={ BillingDashboard }/>
                     <Route path="/SensorInfo" component={ SensorInfo }/>
                     <Route path="/DeleteVehicle" component={ DeleteVehicle }/>
+                   
                    
                 </Switch>
                
