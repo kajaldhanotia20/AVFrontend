@@ -1,5 +1,5 @@
-import React from 'react'
-import { Icon, Label, Menu, Table } from 'semantic-ui-react'
+import React from 'react';
+import { Icon, Label, Menu, Table } from 'semantic-ui-react';
 import Card from "react-bootstrap/Card";
 import { CardGroup, Row, Col} from 'react-bootstrap';
 
