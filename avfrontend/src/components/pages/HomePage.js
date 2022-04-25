@@ -2,12 +2,14 @@ import { Link } from 'react-router-dom'
 import React from 'react'
 import Card from "react-bootstrap/Card";
 import { Button , CardGroup } from 'semantic-ui-react';
-
+import '../../App.css'
 
 export default function HomePage() {
 
 return(
 <CardGroup>
+
+<img src='https://site.utah.gov/dps-highwaysafe/wp-content/uploads/sites/22/2017/02/Autonomous-Twitter-Headersmaller.jpg' className='coverphoto'/>
 <Card className="text-center">
   
   <Card.Body>
@@ -46,8 +48,8 @@ return(
     <Card.Text>
       With supporting text below as a natural lead-in to additional content.
     </Card.Text>
-    <Link to="/UserData"><Button className="primary-button">See User Data</Button></Link>
-    <Link to="/AVData"><Button className="primary-button">See AV Data</Button></Link>
+    <Link to="/AdminDashboard"><Button className="primary-button" >Admin Dashboard</Button></Link>
+    
     
   </Card.Body>
   <Card.Footer className="text-muted">Visible only to AV Admins</Card.Footer>
@@ -57,3 +59,5 @@ return(
 </CardGroup>
 )
 }
+
+

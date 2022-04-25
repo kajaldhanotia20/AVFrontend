@@ -37,7 +37,7 @@ body {
 .main-title {
     padding-top: 10rem;
     font-size: 5rem;
-    font-family: 'Fantasy';
+    font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     color: black;
 }
@@ -46,7 +46,7 @@ body {
 .sub-title {
     padding-top: 10rem;
     font-size: 3rem;
-    font-family: 'Fantasy';
+    font-family: Arial, Helvetica, sans-serif;
     color: black;
 }
 
@@ -54,7 +54,7 @@ body {
 .main-para {
     font-size: 2.5rem;
     text-Transform: capitalize;
-    font-family: 'Serif';
+    font-family: 'Sans-serif';
     color: black;
 }
 
@@ -173,4 +173,12 @@ form span {
 .photo {
     height: 300px;
     width: 500px; 
+}
+
+.coverphoto{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
 }
