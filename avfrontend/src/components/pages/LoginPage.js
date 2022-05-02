@@ -1,16 +1,31 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import Axios from "axios";
 
 import "../../App.css";
 
 export default function LoginPage() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+const [user_name, setUname] = useState("");
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
   function onSubmit(e) {
-    e.preventDefault();
-    alert(`welcome ${username}`);
-    window.location.href = "/home";
+     e.preventDefault();
+     let data = {
+       user_name,
+       password,
+     };
+     Axios.post("http://localhost:8001/login", data)
+       .then((response) => {
+         console.log(response.data.message);
+         if (response.data.message == "ok") {
+           window.alert(`welcome ${user_name}`);
+           window.location.href = "/home";
+         }
+       })
+       .catch((err) => {
+         console.log(err);
+       });
+    
   }
   return (
     <div className="text-center m-5-auto">
@@ -22,7 +37,7 @@ export default function LoginPage() {
           <input
             type="text"
             name="username"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setUname(e.target.value)}
             required
           />
         </p>
