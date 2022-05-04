@@ -25,15 +25,15 @@ create table vehicle(
 );
 
 create table reservation(
-  reservation_id varchar(100) not null,
+  reservation_id varchar(200) not null,
   vehicle_id INT not null,
   user_name varchar(100) not null,
   start_location varchar(100) not null,
   end_location varchar(100) not null,
-  start_time datetime not null,
-  end_time datetime not null,
+  start_time TIME not null,
+  end_time TIME not null,
   payment_type varchar(100) not null,
-  trip_price float,
+  trip_price varchar(100),
   primary key (reservation_id),
   foreign key (user_name) references user (user_name),
   foreign key (vehicle_id) references Vehicle (vehicle_id)

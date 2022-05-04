@@ -7,6 +7,7 @@ const login = require("./Routes/login");
 const admin = require("./Routes/admin");
 const roadtrip = require("./Routes/roadtrip");
 const AVowner = require("./Routes/AVowner");
+const reservation = require("./Routes/reservation");
 const mysql = require("mysql");
 var cors = require("cors");
 
@@ -20,6 +21,7 @@ app.use("/login", login);
 app.use("/admin", admin);
 app.use("/roadtrip", roadtrip);
 app.use("/vehicle", AVowner);
+app.use("/reservation", reservation);
 
 const PORT = 8001;
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
