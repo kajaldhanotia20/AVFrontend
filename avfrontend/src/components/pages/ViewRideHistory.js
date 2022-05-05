@@ -1,55 +1,46 @@
-import React from 'react'
-import { Icon, Label, Menu, Table } from 'semantic-ui-react'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "semantic-ui-react";
 
-const ViewRideHistory = () => (
-  <Table celled>
-    <Table.Header>
-      <Table.Row>
-        <Table.HeaderCell>Source</Table.HeaderCell>
-        <Table.HeaderCell>Destination</Table.HeaderCell>
-        <Table.HeaderCell>Billing</Table.HeaderCell>
-      </Table.Row>
-    </Table.Header>
+import Axios from "axios";
+import Table from "../Table";
+import "./ViewRideHistory.css";
+export default class stats extends Component {
+  constructor(props) {
+    super(props);
 
-    <Table.Body>
-      <Table.Row>
-        <Table.Cell>
-          <Label ribbon>First</Label>
-        </Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-        <Table.Cell>Cell</Table.Cell>
-      </Table.Row>
-    </Table.Body>
+    this.state = {
+      stats: [],
+      username: "abhim",
+    };
+  }
+  componentDidMount(props) {
+    let user_name = this.state.username;
+    console.log(user_name);
+    let data = {
+      user_name,
+    };
+    console.log(data);
+    Axios.post("http://localhost:8001/ridehistory", data).then((response) => {
+      console.log(response);
+      this.setState({
+        stats: response.data,
+      });
+    });
+  }
 
-    <Table.Footer>
-      <Table.Row>
-        <Table.HeaderCell colSpan='3'>
-          <Menu floated='right' pagination>
-            <Menu.Item as='a' icon>
-              <Icon name='chevron left' />
-            </Menu.Item>
-            <Menu.Item as='a'>1</Menu.Item>
-            <Menu.Item as='a'>2</Menu.Item>
-            <Menu.Item as='a'>3</Menu.Item>
-            <Menu.Item as='a'>4</Menu.Item>
-            <Menu.Item as='a' icon>
-              <Icon name='chevron right' />
-            </Menu.Item>
-          </Menu>
-        </Table.HeaderCell>
-      </Table.Row>
-    </Table.Footer>
-  </Table>
-)
-
-export default ViewRideHistory
+  render() {
+    return (
+      <div className="Stats">
+        <div className="Table">
+          <Table data={this.state.stats} />
+        </div>
+        <div>
+          <Link to="/homeUser">
+            <Button className="primary-button">Back</Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
+}
