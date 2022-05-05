@@ -9,8 +9,10 @@ router.post("/", (req, res) => {
     "SELECT * from user where user_name = ?",
     [req.body.user_name],
     (err, result) => {
+      console.log(result[0].user_type);
       if (err || Object.keys(result).length === 0) {
         res.send({ message: "notok" });
+        console.log(err);
       } else {
         const hashedPassword = result[0].password;
         bcrypt.compare(
@@ -18,9 +20,12 @@ router.post("/", (req, res) => {
           hashedPassword,
           function (err, isMatch) {
             if (err || !isMatch) {
+              console.log(err);
               res.send({ message: "notok" });
             } else {
-              res.send({ message: "ok" });
+              if (result[0].user_type === "AV User") {
+                res.send({ message: "AV User ok" });
+              } else res.send({ message: "AV Owner ok" });
             }
           }
         );

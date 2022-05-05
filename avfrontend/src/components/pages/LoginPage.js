@@ -1,34 +1,68 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, Redirect } from "react-router-dom";
 import Axios from "axios";
 
 import "../../App.css";
 
 export default function LoginPage() {
-const [user_name, setUname] = useState("");
-const [email, setEmail] = useState("");
-const [password, setPassword] = useState("");
+  const [user_name, setUname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
   function onSubmit(e) {
-     e.preventDefault();
-     let data = {
-       user_name,
-       password,
-     };
-     Axios.post("http://localhost:8001/login", data)
-       .then((response) => {
-         console.log(response.data.message);
-         if (response.data.message == "ok") {
-           window.alert(`welcome ${user_name}`);
-           window.location.href = "/home";
-         }
-       })
-       .catch((err) => {
-         console.log(err);
-       });
+    e.preventDefault();
+    let data = {
+      user_name,
+      password,
+    };
+    Axios.post("http://localhost:8001/login", data)
+      .then((response) => {
+        console.log(response);
+        console.log(response.data.message);
+        if (response.statusText == "OK") {
+          setMessage(response.data.message);
+        } else setMessage(response.data.message);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  
+  };
+
+let redirectVar = null;
+if (message === "AV User ok") {
+  localStorage.removeItem("login_status");
+  localStorage.setItem(
+    "login_status",
+    JSON.stringify({
+      status: "true",
+    })
+  );
+  alert(`Logged in successfully, welcome ${user_name}!`);
+  redirectVar = <Redirect to="/homeUser" />;
+} else if(message === "AV Owner ok")
+{
+    localStorage.removeItem("login_status");
+    localStorage.setItem(
+      "login_status",
+      JSON.stringify({
+        status: "true",
+      })
+    );
+    alert(`Logged in successfully, welcome ${user_name}!`);
+    redirectVar = <Redirect to="/homeOwner" />;
+}
+else if (message === "notok") {
+  alert("Log in failed");
+  redirectVar = <Redirect to="/" />;
+}
+
+
+
+return (
     
-  }
-  return (
     <div className="text-center m-5-auto">
+      {redirectVar}
       <h2>Sign in</h2>
       <form onSubmit={onSubmit}>
         <p>
@@ -70,4 +104,6 @@ const [password, setPassword] = useState("");
       </footer>
     </div>
   );
+
+  
 }
