@@ -35,4 +35,22 @@ router.delete("/delete", (req, res) => {
   );
 });
 
+
+router.put("/update",(req,res)=>{
+  pool.query("UPDATE vehicle SET vehicle_class=? ,vehicle_model=?,vehicle_brand=?,vehicle_license=?  where vehicle_id=?",
+  [req.body.vehicle_class,
+    req.body.vehicle_model,
+    req.body.vehicle_brand,
+    req.body.vehicle_license,
+    req.body.vehicle_id
+  ],
+  (err,result) => {
+    if(err)
+    res.send({message:"updatenotok"});
+    else
+    res.send({message:"updateok"});
+  }
+  );
+});
+
 module.exports = router;

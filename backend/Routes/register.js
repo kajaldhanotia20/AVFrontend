@@ -21,7 +21,7 @@ router.post("/", (req, res) => {
     ],
     (err, result) => {
       if (err) {
-        res.send({ message: "notok" });
+        res.send({ message: "notok" +err});
       } else {
         res.send({ message: "ok" });
       }
@@ -30,3 +30,7 @@ router.post("/", (req, res) => {
 });
 
 module.exports = router;
+
+
+
+

@@ -25,6 +25,6 @@ app.use("/vehicle", AVowner);
 app.use("/reservation", reservation);
 app.use("/ridehistory", ridehistory);
 
-const PORT = 8001;
+const PORT = 8007;
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
 module.exports = app;
