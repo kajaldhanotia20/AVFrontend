@@ -43,15 +43,13 @@ module.exports=pool;
 //connecting to MONGO
 
 mongoose
-  .connect("mongodb+srv://dbuser:dbuser@281avcloud.cspsm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority" , {
+  .connect("mongodb+srv://admin:adminuser@281avcloud.cspsm.mongodb.net/SensorData?retryWrites=true&w=majority" , {
     // retry to connect 
-    reconnectTries: 1,
+   // reconnectTries: 1,
     // wait 5 seconds before retryMon
-    reconnectInterval: 5000,
+    //reconnectInterval: 5000,
     useNewUrlParser: true,
   })
   .then(() => console.log("Connected to MongoDatabase"))
   .catch((err) => console.log("Failed to connect to Database"+err));
-
-
 
