@@ -12,9 +12,19 @@ router.post("/", (req, res) => {
         res.send({ message: "notok" });
       } else {
         res.send(result);
-        // console.log(result[0]["reservation_id"]);
       }
     }
   );
+});
+
+router.get("/1", (req, res) => {
+  pool.query("Select * from reservation", (err, result) => {
+    if (err) {
+      console.log(err);
+      res.send({ message: "notok" });
+    } else {
+      res.send(result);
+    }
+  });
 });
 module.exports = router;

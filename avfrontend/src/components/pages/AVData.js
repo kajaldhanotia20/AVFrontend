@@ -1,29 +1,36 @@
-import React from 'react';
-import { Icon, Label, Menu, Table } from 'semantic-ui-react';
-import Card from "react-bootstrap/Card";
-import { CardGroup, Row, Col} from 'react-bootstrap';
+import io from "socket.io-client";
+import React from "react";
+import ReactDOM from "react-dom";
+import { useEffect, useState } from "react";
+import {
+  BarChart,
+  Bar,
+  Line,
+  LineChart,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from "recharts";
 
+const socket = io("http://localhost:8002", {
+  transports: ["websocket", "polling"],
+});
 
-const AVData = () => (
-<Row xs={1} md={2} className="g-4">
-  {Array.from({ length: 6 }).map((_, idx) => (
-    <Col>
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
-        <Card.Body>
-          <Card.Title>AV Property</Card.Title>
-          <Card.Text>
-           This is some information about the AV imported from CARLA such as AV Location, 
-           Sensor Information and AV zcurrent Status.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    </Col>
-  ))}
-</Row>
-
-
-
-)
-
-export default AVData
+export default function AVData({}) {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    socket.on("cpu", (cpuPercent) => {
+      setData((currentData) => [...currentData, cpuPercent]);
+    });
+  }, []);
+  return (
+    <div>
+      <h1>Real Time Carla Usage</h1>
+      <LineChart width={500} height={300} data={data}>
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Line dataKey="value" />
+      </LineChart>
+    </div>
+  );
+}
