@@ -1,53 +1,52 @@
-const io = require('./index').io
+const app = express.init();
+const server = require("http").createServer(app);
+const io = require("socket.io")(server);
 
-const MongoClient = require('mongodb').MongoClient
+const MongoClient = require("mongodb").MongoClient
 const atlasURL = "mongodb+srv://admin:adminuser@281avcloud.cspsm.mongodb.net/SensorData?retryWrites=true&w=majority"
 
-const client = new MongoClient(atlasURL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+const mongoClient = new MongoClient(atlasURL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 })
 
-client.connect(err => {
-  if (err) {
-    console.log(`Core problem connecting to Mongo!`)
-  } else {
-    console.log('Core connected to MongoDB')
-  }
-  const db = client.db('SensorData')
-  const collection = db.collection('Sensor')
-
-  const pipeline = {
-    $match: {
-      operationType: {
-        $in: ['insert']
-      }
+mongoClient.connect(err => {
+    if(err) {
+        console.log("Problem connecting to Mongo!");
+    } else {
+        console.log("Connected to MongoDB");
     }
-  }
 
-  io.on('connection', socket => {
-    console.log(`chartPage connected: ${socket.id}`)
-    socket.on('disconnect', () => {
-      console.log(`chartPage disconnected!`)
+    const db = mongoClient.db("SensorData");
+    const collection = db.collection("Sensor");
+    const pipeline = {
+        $match: {
+            operationType: {
+                $in: ["insert"]
+            }
+        }
+    }
+
+    io.on("connection", (socket) => {
+        console.log("Client conencted with Socket ID = ${socket.id}")
+        socket.on("newSensorData", (sensorData) => {
+            io.emit();
+        })
+
+        socket.on("disconnect", () => {
+            console.log(`chartPage disconnected!`)
+        });
     })
-  })
 
-  const transmit = document => {
-    io.emit('chartData', document)
-    console.log(`packet emitted: ${document}`)
-  }
+    (() => { // IIFE; add test for cursor available
 
-  (() => { // IIFE; add test for cursor available
-    console.log(`startStream`)
-    const changeStream = collection.watch([pipeline], {
-      fullDocument: 'updateLookup' })
-    changeStream.on('change', document => {
-      const packet = []
-      packet[0] = document.fullDocument.TimeStamp // could parse from object:_id
-      packet[1] = document.fullDocument.Data
-      transmit(document)
-      console.log(document)
-    })
-  }
-  )()
+        console.log("startStream")
+        const changeStream = collection.watch([pipeline], {fullDocument: "updateLookup"})
+
+        changeStream.on("change", (change) => {
+            console("New sensor data added: ", change.fullDocument._id);
+            io.emit(change.fullDocument);
+        })
+    }
+    )()
 })

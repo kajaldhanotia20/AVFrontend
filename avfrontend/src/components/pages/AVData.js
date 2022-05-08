@@ -12,18 +12,21 @@ import {
   Tooltip,
 } from "recharts";
 
-const socket = io("http://localhost:3300", {
-  transports: ["websocket", "polling"],
-});
 
 export default function AVData({}) {
   const [data, setData] = useState([]);
   useEffect(() => {
-    socket.on("cpu", (cpuPercent) => {
-      setData((currentData) => [...currentData, cpuPercent]);
+    const socket = io("http://localhost:3100", {
+      transports: ["websocket", "polling"],
+    });
+    socket.on("Form API", res => {
+      console.log(res)
+      setData(res);
       console.log(data)
     });
-  }, []);
+    return () => socket.disconnect();
+  },[]);
+
   return (
     <div>
       <h1>Real Time Carla Usage</h1>
