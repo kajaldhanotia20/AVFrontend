@@ -12,7 +12,7 @@ import {
   Tooltip,
 } from "recharts";
 
-const socket = io("http://localhost:8002", {
+const socket = io("http://localhost:3300", {
   transports: ["websocket", "polling"],
 });
 
@@ -21,6 +21,7 @@ export default function AVData({}) {
   useEffect(() => {
     socket.on("cpu", (cpuPercent) => {
       setData((currentData) => [...currentData, cpuPercent]);
+      console.log(data)
     });
   }, []);
   return (

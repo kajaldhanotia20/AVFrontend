@@ -42,7 +42,7 @@ module.exports=pool;
 
 //connecting to MONGO
 
-mongoose
+const mongo_connection = mongoose
   .connect("mongodb+srv://admin:adminuser@281avcloud.cspsm.mongodb.net/SensorData?retryWrites=true&w=majority" , {
     // retry to connect 
    // reconnectTries: 1,

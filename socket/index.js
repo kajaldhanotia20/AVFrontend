@@ -1,20 +1,21 @@
-const server = require("http").createServer();
-const os = require("os-utils");
+const express = require('express')
+const path = require('path')
+const logger = require('morgan')
 
-const io = require("socket.io")(server, {
-  transports: ["websocket", "polling"],
-});
+const app = express()
+const port = 3300
 
-let tick = 0;
-io.on("connection", (client) => {
-  setInterval(() => {
-    os.cpuUsage((cpuPercent) => {
-      client.emit("cpu", {
-        name: tick++,
-        value: cpuPercent,
-      });
-    });
-  }, 1000);
-});
+app.use(logger('dev'))
 
-server.listen(8002);
+app.use(express.static('views'))
+app.use(express.static('js'))
+
+const server = require('http').createServer(app)
+const io = require('socket.io')(server)
+// note that socket is attached to server not app
+
+server.listen(port, () => console.log(`Server on port:${port}`))
+// can this syntax be abbreviated further?
+
+module.exports = { io } // export socket instance
+require('./changeStream')

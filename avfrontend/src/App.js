@@ -34,13 +34,18 @@ export default function App() {
             <Route path="/homeOwner" component={HomePageAVOwner} />
             <Route path="/adminDashboard" component={AdminDashboard} />
             <Route path="/userData" component={UserData} />
-            <Route path="/AVData" component={AVData} />
+            {/* <Route path="/AVData" component={AVData} /> */}
+            <Route path='/AVData' component={() => { 
+                window.location.href = 'http://localhost:3300'; 
+                return null;
+            }}/>
             <Route path="/ScheduleRide" component={ScheduleRide} />
             <Route path="/ViewRideHistory" component={ViewRideHistory} />
             <Route path="/AddVehicle" component={AddVehicle} />
             <Route path="/BillingDashboard" component={BillingDashboard} />
             <Route path="/SensorInfo" component={SensorInfo} />
             <Route path="/DeleteVehicle" component={DeleteVehicle} />
+            <Route path="/AdminDashboard" component={DeleteVehicle} />
           </Switch>
         </div>
       </Router>
