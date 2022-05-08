@@ -22,21 +22,19 @@ export default function HomePage() {
             <Button className="primary-button">Schedule a Ride</Button>
           </Link>
           <Link to="/ViewRideHistory">
-            <Button className="primary-button">View Ride History</Button>
-          </Link>
-          <Link to="/BillingDashboard">
-            <Button className="primary-button">Billing Dashboard</Button>
-          </Link>
-          <Link to="/SensorInfo">
-            <Button className="primary-button">AV Sensor Information</Button>
+            <Button className="primary-button">
+              View Ride History/Billing
+            </Button>
           </Link>
           <Link to="/">
             <Button className="primary-button">Logout</Button>
           </Link>
         </Card.Body>
-        <Card.Footer className="text-muted">
-          Visible only to AV Users
-        </Card.Footer>
+        <br />
+        <br />
+        <br />
+        <br />
+        <Card.Footer className="text-muted">Services to AV Users</Card.Footer>
       </Card>
     </CardGroup>
   );

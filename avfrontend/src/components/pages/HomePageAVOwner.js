@@ -13,11 +13,9 @@ export default function HomePageAVOwner() {
       />
       <Card className="text-center">
         <Card.Body>
-          <Card.Title>Welcome AV Owner</Card.Title>
-          <Card.Text>
-            With supporting text below as a natural lead-in to additional
-            content.
-          </Card.Text>
+          <Card.Title>
+            <h3>Welcome AV Owner</h3>
+          </Card.Title>
           <Link to="/AddVehicle">
             <Button className="primary-button">Add A Vehicle</Button>
           </Link>
@@ -31,6 +29,13 @@ export default function HomePageAVOwner() {
             <Button className="primary-button">Logout</Button>
           </Link>
         </Card.Body>
+        <br />
+        <br />
+        <br />
+        <br />
+        <Card.Footer className="text-muted">
+          Services to AV Owners
+        </Card.Footer>
       </Card>
     </CardGroup>
   );

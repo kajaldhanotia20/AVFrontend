@@ -113,7 +113,8 @@ input {
     padding: .3rem;
     border-radius: 5px;
     outline: none;
-    border: none
+    border: none;
+    margin-left: 10px;
 }
 
 #sub_btn {

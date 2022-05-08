@@ -26,22 +26,10 @@ export default function LoginPage() {
       .catch((err) => {
         console.log(err);
       });
-  
-  };
+  }
 
-let redirectVar = null;
-if (message === "AV User ok") {
-  localStorage.removeItem("login_status");
-  localStorage.setItem(
-    "login_status",
-    JSON.stringify({
-      status: "true",
-    })
-  );
-  alert(`Logged in successfully, welcome ${user_name}!`);
-  redirectVar = <Redirect to="/homeUser" />;
-} else if(message === "AV Owner ok")
-{
+  let redirectVar = null;
+  if (message === "AV User ok") {
     localStorage.removeItem("login_status");
     localStorage.setItem(
       "login_status",
@@ -50,17 +38,24 @@ if (message === "AV User ok") {
       })
     );
     alert(`Logged in successfully, welcome ${user_name}!`);
+    redirectVar = <Redirect to="/homeUser" />;
+  } else if (message === "AV Owner ok") {
+    localStorage.removeItem("login_status");
+    localStorage.setItem(
+      "login_status",
+      JSON.stringify({
+        status: "true",
+        user_name: user_name,
+      })
+    );
+    alert(`Logged in successfully, welcome ${user_name}!`);
     redirectVar = <Redirect to="/homeOwner" />;
-}
-else if (message === "notok") {
-  alert("Log in failed");
-  redirectVar = <Redirect to="/" />;
-}
+  } else if (message === "notok") {
+    alert("Log in failed");
+    redirectVar = <Redirect to="/" />;
+  }
 
-
-
-return (
-    
+  return (
     <div className="text-center m-5-auto">
       {redirectVar}
       <h2>Sign in</h2>
@@ -104,6 +99,4 @@ return (
       </footer>
     </div>
   );
-
-  
 }
