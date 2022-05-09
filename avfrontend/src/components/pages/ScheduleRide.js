@@ -14,6 +14,7 @@ export default class ScheduleRide extends Component {
       end_location: "",
       payment_type: "",
       vehicles: [],
+      vehicle_selected: "",
       user_name: JSON.parse(localStorage.getItem("login_status")).emailId,
     };
   }
@@ -29,44 +30,42 @@ export default class ScheduleRide extends Component {
     });
   }
 
-  //   handleOnSubmit = (e) => {
-  //     e.preventDefault();
-  //     console.log(this.state.appointmentDate);
-  //     console.log(this.state.appointmentTime);
-  //     console.log(this.state.Email);
-  //     let data = {
-  //       VC_name: this.state.vaccineCenterControl,
-  //       V_name: this.state.vaccineNameControl,
-  //       FDate: this.state.appointmentDate,
-  //       Ftime: this.state.appointmentTime,
-  //       Email: this.state.Email,
-  //       sponsorName: this.state.sponsorControl,
-  //     };
-  //     Axios.post("http://localhost:5000/slotbookingfetch/slotbook", data).then(
-  //       (response) => {
-  //         console.log(response.data.message);
-  //         if (response.status === 200) {
-  //           var slotId = new String(response.data.id);
-  //           this.setState({
-  //             message: response.data.message,
-  //             hideSuccess: false,
-  //             successEmail: JSON.parse(localStorage.getItem("login_status"))
-  //               .emailId,
-  //             slotId: slotId.toString(),
-  //           });
-  //           Axios.post(
-  //             "http://localhost:5000/slotbookingfetch/updateStockOnBooking",
-  //             data
-  //           ).then((response) => {
-  //             console.log(response.data.message);
-  //             if (response.status === 200) {
-  //               alert("Stock reduced");
-  //             }
-  //           });
-  //         }
-  //       }
-  //     );
-  //   };
+  handleOnSubmit = (e) => {
+    e.preventDefault();
+    // let headers = new Headers();
+    // headers.append("Content-Type", "application/json");
+    // headers.append("Accept", "application/json");
+    // headers.append("Origin", "http://localhost:3000");
+    console.log("onSubmit");
+    console.log(this.state.start_location);
+    console.log(this.state.end_location);
+    console.log(this.state.payment_type);
+    console.log(this.state.user_name);
+    console.log(this.state.vehicle_selected);
+    let data = {
+      startLocation: this.state.start_location,
+      endLocation: this.state.end_location,
+      vehicle: this.state.vehicle_selected,
+      payment: this.state.payment_type,
+    };
+    let url = "http://10.0.0.14:5500/start_ride";
+    Axios.defaults.withCredentials = true;
+    Axios.post(
+      url,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        },
+      },
+      data
+    ).then((response) => {
+      console.log(response.data.message);
+      if (response.status === 200) {
+        console.log(response);
+      }
+    });
+  };
   handleStartLocation = (e) => {
     console.log(e.target.value);
     this.setState({ start_location: e.target.value });
@@ -79,6 +78,10 @@ export default class ScheduleRide extends Component {
   handlePayment = (e) => {
     console.log(e.target.value);
     this.setState({ payment_type: e.target.value });
+  };
+  handleVechicleSelected = (e) => {
+    console.log(e.target.value);
+    this.setState({ vehicle_selected: e.target.value });
   };
 
   render() {
@@ -105,20 +108,24 @@ export default class ScheduleRide extends Component {
         <form>
           <label>
             Start Location
-            <input type="text" name="name" />
+            <input
+              type="text"
+              name="name"
+              onChange={this.handleStartLocation}
+            />
           </label>
           <br />
           <br />
           <br />
           <label>
             End Location
-            <input type="text" name="name" />
+            <input type="text" name="name" onChange={this.handleEndLocation} />
           </label>
           <br />
           <br />
           <br />
           <label class="labelSlot">Vehicle Brand</label>
-          <select name="vehicle">
+          <select name="vehicle" onChange={this.handleVechicleSelected}>
             {this.state.vehicles.map((i) => {
               return (
                 <option value={i.vehicle_brand} key={i.vehicle_brand}>
@@ -130,7 +137,7 @@ export default class ScheduleRide extends Component {
           <br />
           <br />
           <label class="labelSlot">Payment Type</label>
-          <select name="payment">
+          <select name="payment" onChange={this.handlePayment}>
             <option value="CC" key="CC">
               Credit Card
             </option>
@@ -146,7 +153,7 @@ export default class ScheduleRide extends Component {
                 <Button
                   size="lg"
                   variant="outline-primary"
-                  //   onClick={this.handleOnSubmit}
+                  onClick={this.handleOnSubmit}
                 >
                   Book Ride
                 </Button>
