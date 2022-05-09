@@ -48,23 +48,23 @@ export default class ScheduleRide extends Component {
       vehicle: this.state.vehicle_selected,
       payment: this.state.payment_type,
     };
-    let url = "http://10.0.0.14:5500/start_ride";
-    Axios.defaults.withCredentials = true;
-    Axios.post(
-      url,
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-        },
-      },
-      data
-    ).then((response) => {
-      console.log(response.data.message);
-      if (response.status === 200) {
-        console.log(response);
-      }
-    });
+    // let url = "http://10.0.0.14:5500/start_ride";
+    // Axios.defaults.withCredentials = true;
+    // Axios.post(
+    //   url,
+    //   {
+    //     headers: {
+    //       "Access-Control-Allow-Origin": "*",
+    //       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+    //     },
+    //   },
+    //   data
+    // ).then((response) => {
+    //   console.log(response.data.message);
+    //   if (response.status === 200) {
+    //     console.log(response);
+    //   }
+    // });
   };
   handleStartLocation = (e) => {
     console.log(e.target.value);

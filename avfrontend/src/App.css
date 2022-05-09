@@ -7,7 +7,7 @@
 }
 
 body {
-    margin: 0 auto
+    margin: 0 auto;
 }
 
 .m-5-auto {
@@ -170,6 +170,19 @@ form span {
   margin-top: 10mm ;
   margin-bottom: 10mm ;
 }
+
+#Login{
+    /* background-image: url(../src/assets/images/registration.png); */
+    height: 5000%;
+width : 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+ 
+}
+
+
 
 .photo {
     height: 300px;

@@ -20,8 +20,7 @@
     "semantic-ui-react": "^2.1.2",
     "socket.io-client": "^4.5.0",
     "websocket": "^1.0.34",
-    "yarn": "^1.22.18",
-    "proxy": "http://10.0.0.14:5500/start_ride"
+    "yarn": "^1.22.18"
   },
   "scripts": {
     "start": "react-scripts start",
