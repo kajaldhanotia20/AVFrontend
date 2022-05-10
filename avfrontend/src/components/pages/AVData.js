@@ -23,18 +23,18 @@ export default function AVData({}) {
       console.log(res)
       setData(res);
       console.log(data)
-    });
+    }); 
     return () => socket.disconnect();
-  },[]);
+  },[]); 
 
   return (
-    <div>
-      <h1>Real Time Carla Usage</h1>
-      <LineChart width={500} height={300} data={data}>
+    <div className="SensorData">
+      <h1 className="main-para">Real Time Carla Usage</h1>
+     {  <LineChart width={500} height={300} data={data}>
         <XAxis dataKey="name" />
         <YAxis />
         <Line dataKey="value" />
-      </LineChart>
+      </LineChart> }
     </div>
   );
 }

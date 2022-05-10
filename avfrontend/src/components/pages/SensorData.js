@@ -4,6 +4,8 @@ import axios from "axios";
 import Table from "react-bootstrap/Table";
 import React, { Component, Item } from "react";
 
+import "../../App.css";
+
 export default class App extends Component {
 	constructor(props) {
 		super(props);
@@ -74,12 +76,12 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<div className="SensorData">
-                <h1>CARLA Real-time Vehicle Sensor Data</h1>
+			<div className="SensorData" >
+                <h1 className="main-para">CARLA Real-time Vehicle Sensor Data</h1>
                 <br></br>
                 <br></br>
 				<div className="World Details">
-					<h3>World Details</h3>
+					<h3 className="subheading" >World Details</h3>
 					<Table striped bordered hover title="World Details">
 						<thead>
 							<tr>
@@ -103,8 +105,8 @@ export default class App extends Component {
 				</div>
                 <br></br>
                 <br></br>
-				<div className="VehicleDetails">
-					<h3>Vehicle Details</h3>
+				<div className="m-5-auto">
+					<h3 className="subheading" >Vehicle Details</h3>
 					<Table striped bordered hover title="Vehicle Details">
 						<thead>
 							<tr>
@@ -133,7 +135,7 @@ export default class App extends Component {
 				<br></br>
                 <br></br>
 				<div>
-					<h3>Trip Details</h3>
+					<h3 className="subheading" >Trip Details</h3>
 					<Table striped bordered hover title="Trip Details">
 						<thead>
 							<tr>

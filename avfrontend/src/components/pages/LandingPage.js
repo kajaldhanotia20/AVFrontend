@@ -14,7 +14,7 @@ export default function LandingPage() {
         <header style={ HeaderStyle }>
             <button className="primary-button" onClick={()=> loginWithRedirect()} >Admin Dashboard</button>
             <h1 className="main-title text-center">AV Cloud</h1>
-            <p className="main-para text-center">One-stop AV renting platform</p>
+            <p className="subheading">One-stop AV renting platform</p>
             <div className="buttons text-center">
 
             

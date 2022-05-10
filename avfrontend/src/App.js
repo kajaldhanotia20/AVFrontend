@@ -16,7 +16,7 @@ import ScheduleRide  from './components/pages/ScheduleRide'
 import ViewRideHistory from './components/pages/ViewRideHistory'
 import AddVehicle from './components/pages/AddVehicle'
 import BillingDashboard from './components/pages/BillingDashboard'
-import SensorInfo from './components/pages/SensorInfo'
+
 import DeleteVehicle from './components/pages/DeleteVehicle'
 import SensorData from './components/pages/SensorData'
 import './App.css'
@@ -41,7 +41,7 @@ export default function App() {
             <Route path="/ViewRideHistory" component={ViewRideHistory} />
             <Route path="/AddVehicle" component={AddVehicle} />
             <Route path="/BillingDashboard" component={BillingDashboard} />
-            <Route path="/SensorInfo" component={SensorData} />
+           
             <Route path="/DeleteVehicle" component={DeleteVehicle} />
             <Route path="/AdminDashboard" component={DeleteVehicle} />
           </Switch>

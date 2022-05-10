@@ -44,8 +44,8 @@ const [user_type, setUtype] = useState("AV User");
   }
 
   return (
-    <div className="text-center m-5-auto">
-      <h2>Join us</h2>
+    <div className="text-center m-5-auto"style={HeaderStyle} >
+      <h2 className="main-para">Join us</h2>
       <h5>Create your account</h5>
       <form onSubmit={onSubmit}>
         <p>
@@ -170,4 +170,13 @@ const [user_type, setUtype] = useState("AV User");
       </footer>
     </div>
   );
+}
+
+const HeaderStyle = {
+  width: "100%",
+  height: "100%",
+  background: `url(https://img.freepik.com/free-vector/taxi-out-from-phone-booking-online-taxi-service-graphic-design-vector-illustration_620585-19.jpg?w=2000)`,
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover"
 }

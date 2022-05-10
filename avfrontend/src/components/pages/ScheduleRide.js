@@ -15,7 +15,7 @@ export default class ScheduleRide extends Component {
       payment_type: "",
       vehicles: [],
       vehicle_selected: "",
-      user_name: JSON.parse(localStorage.getItem("login_status")).emailId,
+      //user_name: JSON.parse(localStorage.getItem("login_status")).emailId,
     };
   }
 
@@ -103,7 +103,9 @@ export default class ScheduleRide extends Component {
     }
 
     return (
-      <div className="text-center m-5-auto">
+      <div className="text-center m-5-auto" style={HeaderStyle} >
+        
+      <h2 className="main-para">Schedule a Ride</h2>
         {redirectVar}
         <form>
           <label>
@@ -148,11 +150,10 @@ export default class ScheduleRide extends Component {
           <br />
           <br />
           <div>
-            <div className="buttonContainer">
+            <div >
               <a href="/ViewRideHistory">
-                <Button
-                  size="lg"
-                  variant="outline-primary"
+                <Button id="sub_btn"
+                  size="lg" 
                   onClick={this.handleOnSubmit}
                 >
                   Book Ride
@@ -162,6 +163,18 @@ export default class ScheduleRide extends Component {
           </div>
         </form>
       </div>
+      
     );
   }
+}
+
+const HeaderStyle={
+
+  width: "100%",
+  height: "100vh",
+  background: `url(https://i.pinimg.com/originals/4a/d7/13/4ad713b97bd81020827b7e32c40eb833.gif)`,
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover"
+
 }

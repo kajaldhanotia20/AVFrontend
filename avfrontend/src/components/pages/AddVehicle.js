@@ -15,9 +15,9 @@ export default function AddVehicle() {
 
     return (
 
-        <div className="text-center m-5-auto">
-        <h2>Add a Vehicle</h2>
-        <h5>Create your account</h5>
+        <div className="text-center m-5-auto" style={HeaderStyle}>
+        <h2 className="main-para">Add a Vehicle</h2>
+        <h5>List your own vehicle</h5>
         <form onSubmit={onSubmit}>
         <p>
                     <label>Vehicle ID</label><br/>
@@ -42,6 +42,16 @@ export default function AddVehicle() {
                 </p>
                 
                 <p>
+                    <label>Vehicle Class</label><br/>
+                    
+                    <select name="vehicle_class" id="selectList">
+                    <option value="option 1">Tesla</option>
+                     <option value="option 2">Toyota</option>
+                    <option value="option 2">Hyundai</option>
+                </select>
+                </p>
+
+                <p>
                     <label>Vehicle License</label><br/>
                     <input type="text" name="vehicle_license" required />
                 </p>
@@ -60,3 +70,14 @@ export default function AddVehicle() {
     )
 
 }
+
+const HeaderStyle={
+
+    width: "100%",
+    height: "100vh",
+    background: `url(https://cdn2.vectorstock.com/i/1000x1000/87/01/flat-cityscape-modern-city-skyline-daytime-vector-26978701.jpg)`,
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover"
+  
+  }

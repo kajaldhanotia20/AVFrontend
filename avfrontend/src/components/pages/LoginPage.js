@@ -56,10 +56,10 @@ export default function LoginPage() {
   }
 
   return (
-    <div id="Login">
+    <div id="Login" style={HeaderStyle}>
       <div className="text-center m-5-auto">
         {redirectVar}
-        <h2>Sign in</h2>
+        <h2 className="main-para">Sign in</h2>
         <form onSubmit={onSubmit}>
           <p>
             <label>Username or email address</label>
@@ -101,4 +101,14 @@ export default function LoginPage() {
       </div>
     </div>
   );
+}
+
+const HeaderStyle ={
+  width: "100%",
+  height: "120vh",
+  background: `url(https://mir-s3-cdn-cf.behance.net/project_modules/fs/836e7134316935.570280fbcf7a4.gif)`,
+  //backgroundPosition: "bottom",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover"
+
 }

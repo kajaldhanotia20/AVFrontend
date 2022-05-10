@@ -14,8 +14,8 @@ export default function DeleteVehicle() {
 
 
     return (
-        <div className="text-center m-5-auto">
-            <h2>Delete a Vehicle</h2>
+        <div className="text-center m-5-auto" style={HeaderStyle}>
+            <h2 className="main-para">Delete a Vehicle</h2>
             <form onSubmit={onSubmit}>
 
                 <p>
@@ -42,3 +42,14 @@ export default function DeleteVehicle() {
     )
 
 }
+
+const HeaderStyle={
+
+    width: "100%",
+    height: "100vh",
+    background: `url(https://cdn2.vectorstock.com/i/1000x1000/87/01/flat-cityscape-modern-city-skyline-daytime-vector-26978701.jpg)`,
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover"
+  
+  }
