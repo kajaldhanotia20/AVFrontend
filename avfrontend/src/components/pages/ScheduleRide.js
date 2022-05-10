@@ -15,7 +15,7 @@ export default class ScheduleRide extends Component {
       payment_type: "",
       vehicles: [],
       vehicle_selected: "",
-      //user_name: JSON.parse(localStorage.getItem("login_status")).emailId,
+      user_name: JSON.parse(localStorage.getItem("login_status")).emailId,
     };
   }
 

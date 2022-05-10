@@ -28,7 +28,7 @@ export default function AVData({}) {
   },[]); 
 
   return (
-    <div className="SensorData">
+    <div className="SensorData" >
       <h1 className="main-para">Real Time Carla Usage</h1>
      {  <LineChart width={500} height={300} data={data}>
         <XAxis dataKey="name" />
