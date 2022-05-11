@@ -2,7 +2,9 @@ import React from 'react'
 import Table from 'react-bootstrap/Table'
 
 const BillingDashboard = () => (
-    <Table striped bordered hover>
+    <div className='SensorData'>
+      <h1 className='subheading'>Billing Dashboard</h1><br></br>
+    <Table striped bordered hover >
     <thead>
       <tr>
         <th>#</th>
@@ -33,6 +35,7 @@ const BillingDashboard = () => (
       </tr>
     </tbody>
   </Table>
+  </div>
 )
 
 export default BillingDashboard

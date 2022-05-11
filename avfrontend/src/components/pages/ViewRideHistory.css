@@ -1,6 +1,6 @@
 .Stats {
   min-height: 93vh;
-  display: flex;
+  display: block;
   align-items: center;
   background-position: center;
   background-size: cover;
