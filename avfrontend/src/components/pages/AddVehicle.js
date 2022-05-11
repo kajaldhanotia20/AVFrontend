@@ -1,73 +1,101 @@
 import React , {useState} from 'react'
 import { Link } from 'react-router-dom'
-
+import Axios from "axios";
 
 import '../../App.css'
 
 export default function AddVehicle() {
 
-    const [name, setName] = useState("");
+     const [vehicle_class, setVclass] = useState("");
+     const [vehicle_model, setVmodel] = useState("");
+     const [vehicle_brand, setVbrand] = useState("");
+     const [vehicle_license, setVlicense] = useState("");
      function onSubmit(e) {
        e.preventDefault();
-       alert(`Vehicle Added`);
+       
        window.location.href = "/AddVehicle";
      }
 
+      function onSubmit(e) {
+        e.preventDefault();
+        let data = {
+          vehicle_class,
+          vehicle_model,
+          vehicle_brand,
+          vehicle_license,
+        };
+        Axios.post("http://localhost:8001/vehicle/add", data)
+          .then((response) => {
+            console.log(response);
+            console.log(response.data.message);
+            if (response.statusText == "OK") {
+              alert(`Vehicle Added, Check your Database`);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     return (
-
-        <div className="text-center m-5-auto" style={HeaderStyle}>
+      <div className="text-center m-5-auto" style={HeaderStyle}>
         <h2 className="main-para">Add a Vehicle</h2>
         <h5>List your own vehicle</h5>
         <form onSubmit={onSubmit}>
-        <p>
-                    <label>Vehicle ID</label><br/>
-                    <input type="number" name="vehicle_id" required 
-               
-              onChange={(e) => setName(e.target.value)}/>
-          
+          <p>
+            <label>Vehicle Brand</label>
+            <br />
+            <input
+              type="text"
+              name="vehicle_brand"
+              onChange={(e) => setVbrand(e.target.value)}
+              required
+            />
           </p>
-        <p>
-                    <label>Vehicle Brand</label><br/>
-                    <input type="text" name="vehicle_class" required />
-                </p>
-            
-                <p>
-                    <label>Vehicle Class</label><br/>
-                    
-                    <select name="vehicle_class" id="selectList">
-                    <option value="option 1">Sedan</option>
-                     <option value="option 2">SUV</option>
-                    <option value="option 2">XL</option>
-                </select>
-                </p>
-                
-                <p>
-                    <label>Vehicle Class</label><br/>
-                    
-                    <select name="vehicle_class" id="selectList">
-                    <option value="option 1">Tesla</option>
-                     <option value="option 2">Toyota</option>
-                    <option value="option 2">Hyundai</option>
-                </select>
-                </p>
 
-                <p>
-                    <label>Vehicle License</label><br/>
-                    <input type="text" name="vehicle_license" required />
-                </p>
+          <p>
+            <label>Vehicle Model</label>
+            <br />
+            <input
+              type="text"
+              name="vehicle_model"
+              onChange={(e) => setVmodel(e.target.value)}
+              required
+            />
+          </p>
+          <p>
+            <label>Vehicle Class</label>
+            <br />
+            <input
+              type="text"
+              name="vehicle_model"
+              onChange={(e) => setVclass(e.target.value)}
+              required
+            />
+          </p>
+          <p>
+            <label>Vehicle License</label>
+            <br />
+            <input
+              type="text"
+              name="vehicle_model"
+              onChange={(e) => setVlicense(e.target.value)}
+              required
+            />
+          </p>
 
-               
-                
-                <p>
-                    <button id="sub_btn" type="submit">Add</button>
-                </p>
-
-            </form>
-            <footer>
-                <p><Link to="/">Back to Homepage</Link></p>
-            </footer>
-        </div>
-    )
+          <p>
+            <button id="sub_btn" type="submit">
+              Add
+            </button>
+          </p>
+        </form>
+        <footer>
+          <p>
+            <Link to="/">Back to Homepage</Link>
+          </p>
+        </footer>
+      </div>
+    );
 
 }
 

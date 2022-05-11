@@ -30,24 +30,12 @@ export default function LoginPage() {
 
   let redirectVar = null;
   if (message === "AV User ok") {
-    localStorage.removeItem("login_status");
-    localStorage.setItem(
-      "login_status",
-      JSON.stringify({
-        status: "true",
-      })
-    );
+    console.log("AV User Ok from frontend");
+    localStorage.setItem("username", user_name);
     alert(`Logged in successfully, welcome ${user_name}!`);
     redirectVar = <Redirect to="/homeUser" />;
   } else if (message === "AV Owner ok") {
-    localStorage.removeItem("login_status");
-    localStorage.setItem(
-      "login_status",
-      JSON.stringify({
-        status: "true",
-        user_name: user_name,
-      })
-    );
+    localStorage.setItem("username", user_name);
     alert(`Logged in successfully, welcome ${user_name}!`);
     redirectVar = <Redirect to="/homeOwner" />;
   } else if (message === "notok") {
@@ -103,12 +91,11 @@ export default function LoginPage() {
   );
 }
 
-const HeaderStyle ={
+const HeaderStyle = {
   width: "100%",
   height: "120vh",
   background: `url(https://mir-s3-cdn-cf.behance.net/project_modules/fs/836e7134316935.570280fbcf7a4.gif)`,
   //backgroundPosition: "bottom",
   backgroundRepeat: "no-repeat",
-  backgroundSize: "cover"
-
-}
+  backgroundSize: "cover",
+};
