@@ -23,7 +23,7 @@ router.post("/", (req, res) => {
               console.log(err);
               res.send({ message: "notok" });
             } else {
-              if (result[0].user_type === "AV User") {
+              if (result[0].user_type === "AV user") {
                 res.send({ message: "AV User ok" });
               } else res.send({ message: "AV Owner ok" });
             }

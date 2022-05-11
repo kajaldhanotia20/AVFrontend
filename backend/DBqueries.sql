@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS project_AV;
-CREATE DATABASE project_AV;
-USE project_AV;
+DROP DATABASE IF EXISTS group4;
+CREATE DATABASE group4;
+USE group4;
 
 create table user (
   user_name varchar(100),
@@ -36,5 +36,5 @@ create table reservation(
   trip_price varchar(100),
   primary key (reservation_id),
   foreign key (user_name) references user (user_name),
-  foreign key (vehicle_id) references Vehicle (vehicle_id)
+  foreign key (vehicle_id) references vehicle (vehicle_id)
 );
