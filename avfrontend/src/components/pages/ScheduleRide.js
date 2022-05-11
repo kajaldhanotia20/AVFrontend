@@ -15,7 +15,7 @@ export default class ScheduleRide extends Component {
       payment_type: "",
       vehicles: [],
       vehicle_selected: "",
-      user_name: JSON.parse(localStorage.getItem("login_status")).emailId,
+      
     };
   }
 
@@ -48,23 +48,14 @@ export default class ScheduleRide extends Component {
       vehicle: this.state.vehicle_selected,
       payment: this.state.payment_type,
     };
-    // let url = "http://10.0.0.14:5500/start_ride";
-    // Axios.defaults.withCredentials = true;
-    // Axios.post(
-    //   url,
-    //   {
-    //     headers: {
-    //       "Access-Control-Allow-Origin": "*",
-    //       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-    //     },
-    //   },
-    //   data
-    // ).then((response) => {
-    //   console.log(response.data.message);
-    //   if (response.status === 200) {
-    //     console.log(response);
-    //   }
-    // });
+    let url = "http://10.0.0.14:5500/start_ride";
+
+    Axios.get(url, { params: data}).then((response) => {
+      console.log(response.data.message);
+      if (response.status === 200) {
+        console.log(response);
+      } else console.log("405", response);
+    });
   };
   handleStartLocation = (e) => {
     console.log(e.target.value);
@@ -103,9 +94,8 @@ export default class ScheduleRide extends Component {
     }
 
     return (
-      <div className="text-center m-5-auto" style={HeaderStyle} >
-        
-      <h2 className="main-para">Schedule a Ride</h2>
+      <div className="text-center m-5-auto" style={HeaderStyle}>
+        <h2 className="main-para">Schedule a Ride</h2>
         {redirectVar}
         <form>
           <label>
@@ -126,7 +116,7 @@ export default class ScheduleRide extends Component {
           <br />
           <br />
           <br />
-          <label class="labelSlot">Vehicle Brand</label>
+          <label className="labelSlot">Vehicle Brand</label>
           <select name="vehicle" onChange={this.handleVechicleSelected}>
             {this.state.vehicles.map((i) => {
               return (
@@ -138,7 +128,7 @@ export default class ScheduleRide extends Component {
           </select>
           <br />
           <br />
-          <label class="labelSlot">Payment Type</label>
+          <label className="labelSlot">Payment Type</label>
           <select name="payment" onChange={this.handlePayment}>
             <option value="CC" key="CC">
               Credit Card
@@ -150,12 +140,9 @@ export default class ScheduleRide extends Component {
           <br />
           <br />
           <div>
-            <div >
+            <div>
               <a href="/ViewRideHistory">
-                <Button id="sub_btn"
-                  size="lg" 
-                  onClick={this.handleOnSubmit}
-                >
+                <Button id="sub_btn" size="lg" onClick={this.handleOnSubmit}>
                   Book Ride
                 </Button>
               </a>
@@ -163,18 +150,15 @@ export default class ScheduleRide extends Component {
           </div>
         </form>
       </div>
-      
     );
   }
 }
 
-const HeaderStyle={
-
+const HeaderStyle = {
   width: "100%",
   height: "100vh",
   background: `url(https://i.pinimg.com/originals/4a/d7/13/4ad713b97bd81020827b7e32c40eb833.gif)`,
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
-  backgroundSize: "cover"
-
-}
+  backgroundSize: "cover",
+};
