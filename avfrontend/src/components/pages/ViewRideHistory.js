@@ -51,7 +51,7 @@ const HeaderStyle = {
   width: "100%",
   height: "140vh",
   background: `url(https://cdn3.vectorstock.com/i/1000x1000/10/47/taxi-car-city-background-graphic-vector-11631047.jpg)`,
-  //backgroundPosition: "bottom",
+   
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
 };
