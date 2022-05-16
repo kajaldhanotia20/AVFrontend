@@ -11,6 +11,7 @@ export default function HomePage() {
         src="https://site.utah.gov/dps-highwaysafe/wp-content/uploads/sites/22/2017/02/Autonomous-Twitter-Headersmaller.jpg"
         className="coverphoto"
       />
+
       <Card className="text-center">
         <Card.Body>
           <Card.Title>Welcome AV User</Card.Title>
@@ -25,6 +26,9 @@ export default function HomePage() {
             <Button className="primary-button">
               View Ride History/Billing
             </Button>
+          </Link>
+          <Link to="/Wallet">
+            <Button className="primary-button">My Wallet</Button>
           </Link>
           <Link to="/">
             <Button className="primary-button">Logout</Button>

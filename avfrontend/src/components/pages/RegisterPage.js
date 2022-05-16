@@ -30,7 +30,7 @@ const [user_type, setUtype] = useState("AV User");
        phone,
        location,
      };
-  
+  localStorage.setItem("money", "0");
     Axios.post("http://localhost:8001/register", data).then((response) => {
       console.log(response.data.message);
       if (response.data.message=="ok") {

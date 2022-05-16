@@ -32,10 +32,6 @@ export default class ScheduleRide extends Component {
 
   handleOnSubmit = (e) => {
     e.preventDefault();
-    // let headers = new Headers();
-    // headers.append("Content-Type", "application/json");
-    // headers.append("Accept", "application/json");
-    // headers.append("Origin", "http://localhost:3000");
     console.log("onSubmit");
     console.log(this.state.start_location);
     console.log(this.state.end_location);
