@@ -11,12 +11,11 @@ export default class stats extends Component {
 
     this.state = {
       stats: [],
-      username: "abhim",
     };
   }
   componentDidMount(props) {
-    let user_name = this.state.username;
-    console.log(user_name);
+  let user_name = localStorage.getItem("username");
+    console.log("view ride",user_name);
     let data = {
       user_name,
     };
@@ -36,7 +35,7 @@ export default class stats extends Component {
         <div className="Stats">
           <div className="Table">
             <Table data={this.state.stats} />
-            <Button className="primary-button">Stop</Button>
+            <Button size ="s" className="primary-button">Stop Current Trip</Button>
           </div>
           <div>
             <Link to="/homeUser">

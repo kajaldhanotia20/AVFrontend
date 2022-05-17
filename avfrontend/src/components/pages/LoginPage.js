@@ -31,11 +31,11 @@ export default function LoginPage() {
   let redirectVar = null;
   if (message === "AV User ok") {
     console.log("AV User Ok from frontend");
+    localStorage.removeItem("username");
     localStorage.setItem("username", user_name);
     alert(`Logged in successfully, welcome ${user_name}!`);
     redirectVar = <Redirect to="/homeUser" />;
   } else if (message === "AV Owner ok") {
-    localStorage.setItem("username", user_name);
     alert(`Logged in successfully, welcome ${user_name}!`);
     redirectVar = <Redirect to="/homeOwner" />;
   } else if (message === "notok") {

@@ -13,7 +13,6 @@ export default class ScheduleRide extends Component {
       payment_type: "",
       vehicles: [],
       vehicle_selected: "",
-      
     };
   }
 
@@ -30,28 +29,38 @@ export default class ScheduleRide extends Component {
 
   handleOnSubmit = (e) => {
     e.preventDefault();
+    let user = localStorage.getItem("username");
     console.log("onSubmit");
     console.log(this.state.start_location);
     console.log(this.state.end_location);
     console.log(this.state.payment_type);
-    console.log(this.state.user_name);
     console.log(this.state.vehicle_selected);
-    let data = {
-      startLocation: this.state.start_location,
-      endLocation: this.state.end_location,
-      vehicle: this.state.vehicle_selected,
-      payment: this.state.payment_type,
-    };
-    let url = "http://184.105.86.215:5401/start_ride";
+    console.log("User Loggedin", user);
 
-    Axios.get(url, { params: data}).then((response) => {
+    let data = {
+      start_location: this.state.start_location,
+      end_location: this.state.end_location,
+      vehicle_brand: this.state.vehicle_selected,
+      payment_type: this.state.payment_type,
+      user_name: user,
+    };
+    // let url = "http://184.105.86.215:5401/start_ride";
+
+    // Axios.get(url, { params: data}).then((response) => {
+    //   console.log(response.data.message);
+    //   if (response.status === 200) {
+    //     console.log(response);
+    //   } else console.log("405", response);
+    // });
+    let url2 = "http://localhost:8001/reservation";
+    Axios.post(url2, data).then((response) => {
       console.log(response.data.message);
       if (response.status === 200) {
-        console.log(response);
+        console.log("OK");
         window.location.href = "/ViewRideHistory";
       } else console.log("405", response);
     });
-    window.location.href = "/ViewRideHistory";
+    // window.location.href = "/ViewRideHistory";
   };
   handleStartLocation = (e) => {
     console.log(e.target.value);
@@ -72,7 +81,6 @@ export default class ScheduleRide extends Component {
   };
 
   render() {
-
     return (
       <div className="text-center m-5-auto" style={HeaderStyle}>
         <h2 className="main-para">Schedule a Ride</h2>
