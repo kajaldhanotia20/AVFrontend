@@ -3,6 +3,7 @@ const router = express.Router();
 const pool = require("../pool.js");
 
 router.post("/", (req, res) => {
+  console.log(req.body.user_name);
   pool.query(
     "Select vehicle_id, start_location, end_location, trip_price from reservation where user_name = ?",
     [req.body.user_name],

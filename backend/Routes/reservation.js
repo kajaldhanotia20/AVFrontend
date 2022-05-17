@@ -11,21 +11,21 @@ router.post("/", (req, res) => {
     [req.body.vehicle_brand],
     (err, result) => {
       if (err) {
-        console.log(err);
+        // console.log(err);
       } else {
         console.log(result[0]["vehicle_id"]);
         pool.query(
-          "INSERT INTO reservation (reservation_id,vehicle_id,user_name,start_location,end_location,start_time,end_time,payment_type,trip_price) VALUES (?,?,?,?,?,?,?,?,?);",
+          "INSERT INTO reservation (reservation_id,vehicle_id,user_name,start_location,end_location,payment_type) VALUES (?,?,?,?,?,?);",
           [
             id,
             result[0]["vehicle_id"],
             req.body.user_name,
             req.body.start_location,
             req.body.end_location,
-            req.body.start_time,
-            req.body.end_time,
+            // req.body.start_time,
+            // req.body.end_time,
             req.body.payment_type,
-            req.body.trip_price,
+            // req.body.trip_price,
           ],
           (err, result) => {
             if (err) {
@@ -40,7 +40,5 @@ router.post("/", (req, res) => {
     }
   );
 });
-
-
 
 module.exports = router;
