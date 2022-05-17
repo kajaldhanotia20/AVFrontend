@@ -31,7 +31,7 @@ export default function RegisterPage() {
       location,
     };
     localStorage.setItem("money", "0");
-    Axios.post("https://avrental-group4.saikiran.live:8001/register", data)
+    Axios.post("http://avrental-group4.saikiran.live:8001/register", data)
       .then((response) => {
         console.log(response.data.message);
         if (response.data.message == "ok") {

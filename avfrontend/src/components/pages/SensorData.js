@@ -30,7 +30,7 @@ export default class App extends Component {
 
   componentDidMount = async () => {
     //socket.io connection
-    const socket = io("https://avrental-group4.saikiran.live:3300", {
+    const socket = io("http://avrental-group4.saikiran.live:3300", {
       transports: ["websocket", "polling"],
     });
 
@@ -59,7 +59,7 @@ export default class App extends Component {
 
   fetchSensorRecords = async () => {
     const response = await axios.get(
-      "https://avrental-group4.saikiran.live:3300"
+      "http://avrental-group4.saikiran.live:3300"
     );
     try {
       if (response.data.sucess) {

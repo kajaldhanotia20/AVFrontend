@@ -21,7 +21,7 @@ export default class stats extends Component {
     };
     console.log(data);
     Axios.post(
-      "https://avrental-group4.saikiran.live:8001/ridehistory",
+      "http://avrental-group4.saikiran.live:8001/ridehistory",
       data
     ).then((response) => {
       console.log("pp", response.data);

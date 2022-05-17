@@ -47,7 +47,7 @@ export default class ScheduleRide extends Component {
       user_name: user,
       tripID: this.state.reservation_id,
     };
-    let url2 = "https://avrental-group4.saikiran.live:8001/reservation";
+    let url2 = "http://avrental-group4.saikiran.live:8001/reservation";
     console.log("current data 1", data);
     Axios.post(url2, data).then((response) => {
       console.log(response.data);

@@ -15,7 +15,7 @@ import {
 export default function AVData({}) {
   const [data, setData] = useState([]);
   useEffect(() => {
-    const socket = io("https://avrental-group4.saikiran.live:3100", {
+    const socket = io("http://avrental-group4.saikiran.live:3100", {
       transports: ["websocket", "polling"],
     });
     socket.on("Form API", (res) => {

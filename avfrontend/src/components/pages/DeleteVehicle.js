@@ -15,7 +15,7 @@ export default class DeleteVehicle extends Component {
 
   componentDidMount(props) {
     let vehicledetails =
-      "https://avrental-group4.saikiran.live:8001/vehicle/details";
+      "http://avrental-group4.saikiran.live:8001/vehicle/details";
     Axios.get(vehicledetails).then((res) => {
       console.log(res.data);
       this.setState({
@@ -33,7 +33,7 @@ export default class DeleteVehicle extends Component {
       vehicle_id: this.state.vehicle_id,
     };
     console.log(data);
-    let url = "https://avrental-group4.saikiran.live:8001/vehicle/delete";
+    let url = "http://avrental-group4.saikiran.live:8001/vehicle/delete";
     Axios.post(url, data).then((response) => {
       console.log(response.data.message);
       if (response.status === 200) {
