@@ -10,37 +10,38 @@ export default function RegisterPage() {
   const [user_name, setUname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+
   const [dob, setDob] = useState("");
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("AV User");
 
-const [user_type, setUtype] = useState("AV User");
+  const [user_type, setUtype] = useState("AV User");
 
   function onSubmit(e) {
     e.preventDefault();
-     let data = {
-       first_name,
-       last_name,
-       user_name,
-       email,
-       password,
-       user_type,
-       dob,
-       phone,
-       location,
-     };
-  localStorage.setItem("money", "0");
-    Axios.post("http://localhost:8001/register", data).then((response) => {
-      console.log(response.data.message);
-      if (response.data.message=="ok") {
-        window.alert("Successfully registered")
-          window.location.href='/login';
-      }
-    })
-    .catch((err)=>{
-      console.log(err)
-    })
+    let data = {
+      first_name,
+      last_name,
+      user_name,
+      email,
+      password,
+      user_type,
+      dob,
+      phone,
+      location,
+    };
+    localStorage.setItem("money", "0");
+    Axios.post("https://avrental-group4.saikiran.live:8001/register", data)
+      .then((response) => {
+        console.log(response.data.message);
+        if (response.data.message == "ok") {
+          window.alert("Successfully registered");
+          window.location.href = "/login";
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
@@ -188,5 +189,5 @@ const HeaderStyle = {
   background: `url(https://img.freepik.com/free-vector/taxi-out-from-phone-booking-online-taxi-service-graphic-design-vector-illustration_620585-19.jpg?w=2000)`,
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
-  backgroundSize: "cover"
-}
+  backgroundSize: "cover",
+};

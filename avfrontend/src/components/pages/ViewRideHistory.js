@@ -14,20 +14,22 @@ export default class stats extends Component {
     };
   }
   componentDidMount(props) {
-  let user_name = localStorage.getItem("username");
-    console.log("view ride",user_name);
+    let user_name = localStorage.getItem("username");
+    console.log("view ride", user_name);
     let data = {
       user_name,
     };
     console.log(data);
-    Axios.post("http://localhost:8001/ridehistory", data).then((response) => {
-      console.log("pp",response.data);
+    Axios.post(
+      "https://avrental-group4.saikiran.live:8001/ridehistory",
+      data
+    ).then((response) => {
+      console.log("pp", response.data);
       this.setState({
         stats: response.data,
       });
     });
-    console.log("stats",this.state.stats);
-   
+    console.log("stats", this.state.stats);
   }
 
   render() {

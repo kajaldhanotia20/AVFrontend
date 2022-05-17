@@ -8,13 +8,14 @@ export default class DeleteVehicle extends Component {
     super(props);
 
     this.state = {
-        vehicles:[],
+      vehicles: [],
       vehicle_id: 0,
     };
   }
 
   componentDidMount(props) {
-    let vehicledetails = "http://localhost:8001/vehicle/details";
+    let vehicledetails =
+      "https://avrental-group4.saikiran.live:8001/vehicle/details";
     Axios.get(vehicledetails).then((res) => {
       console.log(res.data);
       this.setState({
@@ -31,15 +32,15 @@ export default class DeleteVehicle extends Component {
     let data = {
       vehicle_id: this.state.vehicle_id,
     };
-    console.log(data)
-let url = "http://localhost:8001/vehicle/delete";
-  Axios.post(url, data).then((response) => {
-    console.log(response.data.message);
-    if (response.status === 200) {
-      console.log(response);
-      // window.location.href = "/homeOwner"
-    } else console.log("405", response);
-  });
+    console.log(data);
+    let url = "https://avrental-group4.saikiran.live:8001/vehicle/delete";
+    Axios.post(url, data).then((response) => {
+      console.log(response.data.message);
+      if (response.status === 200) {
+        console.log(response);
+        // window.location.href = "/homeOwner"
+      } else console.log("405", response);
+    });
   };
 
   handleVechicleDeleted = (e) => {

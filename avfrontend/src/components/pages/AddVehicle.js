@@ -24,13 +24,16 @@ export default function AddVehicle() {
           vehicle_brand,
           vehicle_license,
         };
-        Axios.post("http://localhost:8001/vehicle/add", data)
+        Axios.post(
+          "https://avrental-group4.saikiran.live:8001/vehicle/add",
+          data
+        )
           .then((response) => {
             console.log(response);
             console.log(response.data.message);
             if (response.statusText == "OK") {
               alert(`Vehicle Added, Check your Database`);
-              window.location.href = "/homeOwner"
+              window.location.href = "/homeOwner";
             }
           })
           .catch((err) => {
