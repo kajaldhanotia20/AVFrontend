@@ -30,6 +30,7 @@ export default function AddVehicle() {
             console.log(response.data.message);
             if (response.statusText == "OK") {
               alert(`Vehicle Added, Check your Database`);
+              window.location.href = "/homeOwner"
             }
           })
           .catch((err) => {

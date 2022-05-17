@@ -31,18 +31,19 @@ export default class stats extends Component {
 
   render() {
     return (
-      <div className="m-5 auto"><h1 className="subheading">Ride History</h1>
-      <div style={HeaderStyle} className="Stats">
-        <div className="Table">
-          <Table data={this.state.stats} />
+      <div className="text-center m-5-auto" style={HeaderStyle}>
+        <h1 className="subheading">Ride History</h1>
+        <div className="Stats">
+          <div className="Table">
+            <Table data={this.state.stats} />
+            <Button className="primary-button">Stop</Button>
+          </div>
+          <div>
+            <Link to="/homeUser">
+              <Button className="primary-button">Back</Button>
+            </Link>
+          </div>
         </div>
-        <div>
-          <Link to="/homeUser">
-            <Button className="primary-button">Back</Button>
-          </Link>
-        </div>
-      </div>
-      
       </div>
     );
   }
@@ -51,7 +52,6 @@ const HeaderStyle = {
   width: "100%",
   height: "140vh",
   background: `url(https://cdn3.vectorstock.com/i/1000x1000/10/47/taxi-car-city-background-graphic-vector-11631047.jpg)`,
-   
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
 };

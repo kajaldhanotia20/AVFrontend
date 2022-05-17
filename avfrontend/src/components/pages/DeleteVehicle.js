@@ -1,55 +1,101 @@
-import React , {useState}  from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from "react";
+import { Button } from "react-bootstrap";
+import "../../App.css";
+import Axios from "axios";
 
-import '../../App.css'
+export default class DeleteVehicle extends Component {
+  constructor(props) {
+    super(props);
 
-export default function DeleteVehicle() {
+    this.state = {
+        vehicles:[],
+      vehicle_id: 0,
+    };
+  }
 
-    const [name, setName] = useState("");
-     function onSubmit(e) {
-       e.preventDefault();
-       alert(`Vehicle Deleted`);
-       window.location.href = "/DeleteVehicle";
-     }
+  componentDidMount(props) {
+    let vehicledetails = "http://localhost:8001/vehicle/details";
+    Axios.get(vehicledetails).then((res) => {
+      console.log(res.data);
+      this.setState({
+        vehicles: res.data,
+      });
+      console.log(this.state.vehicles);
+    });
+  }
 
+  handleOnSubmit = (e) => {
+    e.preventDefault();
+    console.log("onSubmit");
+    console.log(this.state.vehicle_id);
+    let data = {
+      vehicle_id: this.state.vehicle_id,
+    };
+    console.log(data)
+let url = "http://localhost:8001/vehicle/delete";
+  Axios.post(url, data).then((response) => {
+    console.log(response.data.message);
+    if (response.status === 200) {
+      console.log(response);
+      window.location.href = "/homeOwner"
+    } else console.log("405", response);
+  });
+  };
 
+  handleVechicleDeleted = (e) => {
+    console.log(e.target.value);
+    this.setState({ vehicle_id: e.target.value });
+  };
+
+  render() {
     return (
-        <div className="text-center m-5-auto" style={HeaderStyle}>
-            <h2 className="main-para">Delete a Vehicle</h2>
-            <form onSubmit={onSubmit}>
+      <div className="text-center m-5-auto" style={HeaderStyle}>
+        <h2 className="main-para">Delete Vehicle</h2>
+        <form>
+          <br />
+          <br />
+          <br />
+          <label className="labelSlot">Vehicle ID</label>
+          <select name="vehicle" onChange={this.handleVechicleDeleted}>
+            {this.state.vehicles.map((i) => {
+              return (
+                <option value={i.vehicle_id} key={i.vehicle_id}>
+                  {i.vehicle_id}
+                </option>
+              );
+            })}
+          </select>
+          <br />
+          <br />
+          <label>
+            Reason
+            <input type="text" name="name" onChange={this.handleEndLocation} />
+          </label>
 
-                <p>
-                    <label>Select the vehicle to delete</label><br/>
-                    
-                    <select name="vehicle_class" id="selectList">
-                    <option value="option 1">Vehicle ID-1</option>
-                     <option value="option 2">Vehicle ID-2</option>
-                    <option value="option 2">Vehicle ID-3</option>
-                    <option value="option 2">Vehicle ID-4</option>
-                    onChange={(e) => setName(e.target.value)}
-                </select>
-                </p>
-              
-                <p>
-                    <button id="sub_btn" type="submit">Delete</button>
-                </p>
-
-            </form>
-            <footer>
-                <p><Link to="/">Back to Homepage</Link></p>
-            </footer>
-        </div>
-    )
-
+          <br />
+          <br />
+          <br />
+          <br />
+          <div>
+            <div>
+              <a href="/ViewRideHistory">
+                <Button id="sub_btn" size="lg" onClick={this.handleOnSubmit}>
+                  Delete
+                </Button>
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    );
+  }
 }
 
-const HeaderStyle={
-
-    width: "100%",
-    height: "100vh",
-    background: `url(https://cdn2.vectorstock.com/i/1000x1000/87/01/flat-cityscape-modern-city-skyline-daytime-vector-26978701.jpg)`,
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover"
-  
-  }
+const HeaderStyle = {
+  width: "100%",
+  height: "100vh",
+  background: `url(https://i.pinimg.com/originals/4a/d7/13/4ad713b97bd81020827b7e32c40eb833.gif)`,
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
+};

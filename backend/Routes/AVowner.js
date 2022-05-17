@@ -21,7 +21,8 @@ router.post("/add", (req, res) => {
   );
 });
 
-router.delete("/delete", (req, res) => {
+router.post("/delete", (req, res) => {
+  console.log(req.body);
   pool.query(
     "DELETE FROM vehicle where vehicle_id = ?",
     [req.body.vehicle_id],

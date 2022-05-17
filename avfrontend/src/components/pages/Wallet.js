@@ -16,9 +16,9 @@ export default class Wallet extends Component {
   }
 
   componentDidMount(props) {
-let c = JSON.parse(localStorage.getItem("money"));
-console.log("from ls", c);
-this.setState({ current: c });
+    let c = JSON.parse(localStorage.getItem("money"));
+    console.log("from ls", c);
+    this.setState({ current: c });
   }
 
   handleOnSubmit = (e) => {
@@ -52,7 +52,7 @@ this.setState({ current: c });
       <div className="text-center m-5-auto" style={HeaderStyle}>
         <h2 className="main-para">Manage your wallet</h2>
         <form>
-          <h5>Current Balance : {this.state.current}</h5>
+          <h5>Current Balance : ${this.state.current}</h5>
           <label>
             Amount $
             <input type="text" name="name" onChange={this.handleMoney} />

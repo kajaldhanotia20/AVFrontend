@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Redirect } from "react-router";
 import { Button } from "react-bootstrap";
 import "../../App.css";
 import Axios from "axios";
@@ -44,14 +42,16 @@ export default class ScheduleRide extends Component {
       vehicle: this.state.vehicle_selected,
       payment: this.state.payment_type,
     };
-    let url = "http://10.0.0.14:5500/start_ride";
+    let url = "http://184.105.86.215:5401/start_ride";
 
     Axios.get(url, { params: data}).then((response) => {
       console.log(response.data.message);
       if (response.status === 200) {
         console.log(response);
+        window.location.href = "/ViewRideHistory";
       } else console.log("405", response);
     });
+    window.location.href = "/ViewRideHistory";
   };
   handleStartLocation = (e) => {
     console.log(e.target.value);
@@ -72,27 +72,10 @@ export default class ScheduleRide extends Component {
   };
 
   render() {
-    let redirectVar = null;
-
-    if (this.state.successEmail) {
-      redirectVar = (
-        <Redirect
-          to={{
-            pathname: "/slotBookingSuccess",
-            state: {
-              slotId: this.state.slotId,
-              slotDate: this.state.appointmentDate,
-              slotTime: this.state.appointmentTime,
-            },
-          }}
-        />
-      );
-    }
 
     return (
       <div className="text-center m-5-auto" style={HeaderStyle}>
         <h2 className="main-para">Schedule a Ride</h2>
-        {redirectVar}
         <form>
           <label>
             Start Location

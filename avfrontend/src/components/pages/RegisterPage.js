@@ -44,7 +44,7 @@ const [user_type, setUtype] = useState("AV User");
   }
 
   return (
-    <div className="text-center m-5-auto"style={HeaderStyle} >
+    <div className="text-center m-5-auto" style={HeaderStyle}>
       <h2 className="main-para">Join us</h2>
       <h5>Create your account</h5>
       <form onSubmit={onSubmit}>
@@ -118,6 +118,16 @@ const [user_type, setUtype] = useState("AV User");
             onChange={(e) => setLocation(e.target.value)}
             required
           />
+        </p>
+        <p>
+          <label>Drivers License/ SSN </label>
+          <br />
+          <input type="text" name="address" required />
+        </p>
+        <p>
+          <label>Credit Card/Debit Card </label>
+          <br />
+          <input type="text" name="address" required />
         </p>
         <p>
           <label>User Type</label>

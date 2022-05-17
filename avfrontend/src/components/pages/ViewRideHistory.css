@@ -4,6 +4,7 @@
   align-items: center;
   background-position: center;
   background-size: cover;
+    background: "url(https://cdn3.vectorstock.com/i/1000x1000/10/47/taxi-car-city-background-graphic-vector-11631047.jpg)"
 }
 
 .Table {
@@ -13,6 +14,8 @@
   border: 1px solid darkgray;
   padding: 10px;
   margin-top: 20px;
+   background: "url(https://cdn3.vectorstock.com/i/1000x1000/10/47/taxi-car-city-background-graphic-vector-11631047.jpg)"
+
 }
 
 th {
