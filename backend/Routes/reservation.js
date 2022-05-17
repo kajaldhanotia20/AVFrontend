@@ -32,7 +32,7 @@ router.post("/", (req, res) => {
               res.send({ message: "notok" });
               console.log(err);
             } else {
-              res.send({ message: "ok" });
+              res.send({ data: id });
             }
           }
         );

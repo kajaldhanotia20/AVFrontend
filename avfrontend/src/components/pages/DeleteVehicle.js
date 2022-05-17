@@ -37,7 +37,7 @@ let url = "http://localhost:8001/vehicle/delete";
     console.log(response.data.message);
     if (response.status === 200) {
       console.log(response);
-      window.location.href = "/homeOwner"
+      // window.location.href = "/homeOwner"
     } else console.log("405", response);
   });
   };

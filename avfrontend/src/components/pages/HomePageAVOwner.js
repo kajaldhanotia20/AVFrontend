@@ -22,7 +22,7 @@ export default function HomePageAVOwner() {
           <Link to="/DeleteVehicle">
             <Button className="primary-button">Delete A Vehicle</Button>
           </Link>
-          <Link to="/AVData">
+          <Link to="/SensorData">
             <Button className="primary-button">See AV Status</Button>
           </Link>
           <Link to="/">
@@ -33,9 +33,7 @@ export default function HomePageAVOwner() {
         <br />
         <br />
         <br />
-        <Card.Footer className="text-muted">
-          Services to AV Owners
-        </Card.Footer>
+        <Card.Footer className="text-muted">Services to AV Owners</Card.Footer>
       </Card>
     </CardGroup>
   );

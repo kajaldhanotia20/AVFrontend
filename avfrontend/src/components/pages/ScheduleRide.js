@@ -13,6 +13,7 @@ export default class ScheduleRide extends Component {
       payment_type: "",
       vehicles: [],
       vehicle_selected: "",
+      reservation_id: "",
     };
   }
 
@@ -43,24 +44,35 @@ export default class ScheduleRide extends Component {
       vehicle_brand: this.state.vehicle_selected,
       payment_type: this.state.payment_type,
       user_name: user,
+      tripID: this.state.reservation_id,
     };
-    // let url = "http://184.105.86.215:5401/start_ride";
-
-    // Axios.get(url, { params: data}).then((response) => {
-    //   console.log(response.data.message);
-    //   if (response.status === 200) {
-    //     console.log(response);
-    //   } else console.log("405", response);
-    // });
     let url2 = "http://localhost:8001/reservation";
+    console.log("current data 1", data);
     Axios.post(url2, data).then((response) => {
-      console.log(response.data.message);
+      console.log(response.data);
       if (response.status === 200) {
-        console.log("OK");
-        window.location.href = "/ViewRideHistory";
+        this.setState({ reservation_id: response.data.data });
+        console.log("DB SUCCESS");
+        console.log(this.state.reservation_id);
+        let data2 = {
+          start_location: this.state.start_location,
+          end_location: this.state.end_location,
+          vehicle_brand: this.state.vehicle_selected,
+          payment_type: this.state.payment_type,
+          user_name: user,
+          tripID: this.state.reservation_id,
+        };
+        let url = "http://74.82.30.176:5401/start_ride";
+        console.log("current data 2", data2);
+        Axios.get(url, { params: data2 }).then((response) => {
+          if (response.status === 200) {
+            console.log("KIRAN SUCCESS");
+            console.log(response);
+            window.location.href = "/ViewRideHistory";
+          } else console.log("405", response);
+        });
       } else console.log("405", response);
     });
-    // window.location.href = "/ViewRideHistory";
   };
   handleStartLocation = (e) => {
     console.log(e.target.value);

@@ -21,21 +21,26 @@ export default class stats extends Component {
     };
     console.log(data);
     Axios.post("http://localhost:8001/ridehistory", data).then((response) => {
-      console.log(response);
+      console.log("pp",response.data);
       this.setState({
         stats: response.data,
       });
     });
+    console.log("stats",this.state.stats);
+   
   }
 
   render() {
+    // localStorage.setItem("trip_price", JSON.stringify(this.state.stats));
+    // var trip_price = JSON.parse(localStorage.getItem("trip_price"))
+    // console.log("trip_price",trip_price[0]);
     return (
       <div className="text-center m-5-auto" style={HeaderStyle}>
         <h1 className="subheading">Your Rides</h1>
         <div className="Stats">
           <div className="Table">
             <Table data={this.state.stats} />
-            <Button size ="s" className="primary-button">Stop Current Trip</Button>
+            <Button className="primary-button">Stop Current Trip</Button>
           </div>
           <div>
             <Link to="/homeUser">
