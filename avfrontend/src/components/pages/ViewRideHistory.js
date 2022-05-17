@@ -32,7 +32,7 @@ export default class stats extends Component {
   render() {
     return (
       <div className="text-center m-5-auto" style={HeaderStyle}>
-        <h1 className="subheading">Ride History</h1>
+        <h1 className="subheading">Your Rides</h1>
         <div className="Stats">
           <div className="Table">
             <Table data={this.state.stats} />
