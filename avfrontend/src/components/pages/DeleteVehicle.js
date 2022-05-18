@@ -14,7 +14,7 @@ export default class DeleteVehicle extends Component {
   }
 
   componentDidMount(props) {
-    let vehicledetails = "http://54.67.87.208:8001/vehicle/details";
+    let vehicledetails = "http://13.52.182.171:8001/vehicle/details";
     Axios.get(vehicledetails).then((res) => {
       console.log(res.data);
       this.setState({
@@ -32,7 +32,7 @@ export default class DeleteVehicle extends Component {
       vehicle_id: this.state.vehicle_id,
     };
     console.log(data);
-    let url = "http://54.67.87.208:8001/vehicle/delete";
+    let url = "http://13.52.182.171:8001/vehicle/delete";
     Axios.post(url, data).then((response) => {
       console.log(response.data.message);
       if (response.status === 200) {

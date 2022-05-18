@@ -18,7 +18,7 @@ export default class ScheduleRide extends Component {
   }
 
   componentDidMount(props) {
-    let vehicledetails = "http://54.67.87.208:8001/vehicle/details";
+    let vehicledetails = "http://13.52.182.171:8001/vehicle/details";
     Axios.get(vehicledetails).then((res) => {
       console.log(res.data);
       this.setState({
@@ -46,7 +46,7 @@ export default class ScheduleRide extends Component {
       user_name: user,
       tripID: this.state.reservation_id,
     };
-    let url2 = "http://54.67.87.208:8001/reservation";
+    let url2 = "http://13.52.182.171:8001/reservation";
     console.log("current data 1", data);
     Axios.post(url2, data).then((response) => {
       console.log(response.data);

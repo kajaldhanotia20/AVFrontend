@@ -20,7 +20,7 @@ export default class stats extends Component {
       user_name,
     };
     console.log(data);
-    Axios.post("http://54.67.87.208:8001/ridehistory", data).then(
+    Axios.post("http://13.52.182.171:8001/ridehistory", data).then(
       (response) => {
         console.log("pp", response.data);
         this.setState({
