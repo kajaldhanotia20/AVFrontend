@@ -15,7 +15,7 @@ export default function LoginPage() {
       user_name,
       password,
     };
-    Axios.post("http://avrental-group4.saikiran.live:8001/login", data)
+    Axios.post("http://54.67.87.208:8001/login", data)
       .then((response) => {
         console.log(response);
         console.log(response.data.message);

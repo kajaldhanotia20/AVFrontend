@@ -20,15 +20,14 @@ export default class stats extends Component {
       user_name,
     };
     console.log(data);
-    Axios.post(
-      "http://avrental-group4.saikiran.live:8001/ridehistory",
-      data
-    ).then((response) => {
-      console.log("pp", response.data);
-      this.setState({
-        stats: response.data,
-      });
-    });
+    Axios.post("http://54.67.87.208:8001/ridehistory", data).then(
+      (response) => {
+        console.log("pp", response.data);
+        this.setState({
+          stats: response.data,
+        });
+      }
+    );
     console.log("stats", this.state.stats);
   }
 

@@ -23,7 +23,7 @@ export default function AddVehicle() {
       vehicle_brand,
       vehicle_license,
     };
-    Axios.post("http://avrental-group4.saikiran.live:8001/vehicle/add", data)
+    Axios.post("http://54.67.87.208:8001/vehicle/add", data)
       .then((response) => {
         console.log(response);
         console.log(response.data.message);
