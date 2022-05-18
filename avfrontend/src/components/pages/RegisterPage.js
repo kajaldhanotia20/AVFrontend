@@ -31,7 +31,7 @@ export default function RegisterPage() {
       location,
     };
     localStorage.setItem("money", "0");
-    Axios.post("http://13.52.182.171:8001/register", data)
+    Axios.post("http://54.183.248.255:8001/register", data)
       .then((response) => {
         console.log(response.data.message);
         if (response.data.message == "ok") {

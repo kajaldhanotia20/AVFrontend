@@ -23,7 +23,7 @@ export default function AddVehicle() {
       vehicle_brand,
       vehicle_license,
     };
-    Axios.post("http://13.52.182.171:8001/vehicle/add", data)
+    Axios.post("http://54.183.248.255:8001/vehicle/add", data)
       .then((response) => {
         console.log(response);
         console.log(response.data.message);

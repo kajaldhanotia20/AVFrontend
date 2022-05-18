@@ -15,7 +15,7 @@ export default function LoginPage() {
       user_name,
       password,
     };
-    Axios.post("http://13.52.182.171:8001/login", data)
+    Axios.post("http://54.183.248.255:8001/login", data)
       .then((response) => {
         console.log(response);
         console.log(response.data.message);
